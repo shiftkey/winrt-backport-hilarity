@@ -3,7 +3,7 @@ WinRT.Backport
 
 First off, here's a puppy with a warning:
 
-![]()
+![](https://github.com/shiftkey/winrt-backport-hilarity/raw/master/intro.jpg)
 
 This could be nothing, or people might be interested in it.
 
