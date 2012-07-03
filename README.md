@@ -20,7 +20,7 @@ And this reply came back:
 
 So I've taken Paul's suggestion and gone a bit further:
 
-## Can we provide an WinRT-compatible library  for traditional .NET libraries to work against?
+## Can we provide an WinRT-compatible API for traditional .NET libraries to work against?
 
 ### Goals
 
