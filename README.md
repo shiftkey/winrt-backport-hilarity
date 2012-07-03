@@ -9,6 +9,8 @@ This could be nothing, or people might be interested in it.
 
 I was skimming over some old Win8 posts today, and got to thinking "What other crazy things could I start up?"
 
+So I tweeted something:
+
 <blockquote class="twitter-tweet"><p>an experiment in crowd-sourcing - what problems would you like to see me tackle for WinRT dev? add your ideas here <a href="https://t.co/d0kwKJbf" title="https://github.com/shiftkey/winrt-blogsamples/blob/master/README.md">github.com/shiftkey/winrt…</a></p>&mdash; Brendan Forster (@shiftkey) <a href="https://twitter.com/shiftkey/status/220014393159712772" data-datetime="2012-07-03T04:41:33+00:00">July 3, 2012</a></blockquote>
 
 And this reply came back:
@@ -42,11 +44,11 @@ What sorts of libraries are not suited to this approach?
 
 Hell, I'm not even sure if this is legal. But anyway, here's what I've done so far.
 
- 1. Use ILSpy to output the class definition inside Windows.winmd (yes, it works).
- 2. Turned off a bunch of namespaces for now to focus on Windows.Foundations.* and Windows.Storage.*
- 3. Cleanup the existing code so that it compiles (without implementations behind the scenes)
- 4. Grab the latest build of NLog and add to source
- 5. Create a new class library targeting NETFX_CORE to test for compilation
+ 1. Use ILSpy to output the class definitions inside Windows.winmd (yes, it works).
+ 2. Hidden a bunch of namespaces temporarily to focus on Windows.Foundations.* and Windows.Storage.*
+ 3. Cleanup the existing code so that it compiles (no implementations behind the scenes so plenty of warnings)
+ 4. Grab the latest build of NLog and add to source.
+ 5. Create a new class library targeting NETFX_CORE to test for compilation.
  6. Use FileTarget (for example) to pull in enough files to get the code to compile
 
 So for this case there's these three classes missing (without modifying any code):
@@ -71,6 +73,12 @@ And these are the sorts of strategies I've used:
  - an adapter to map the existing implementation to a new interface (less friction, short-term fix) or expose the new interface with the existing implementation behind it (more friction, long-term fix).
  - conditional compilation (although partial classes may be an option if the code can be refactored to separate core and platform-specific code).
 
+### What next?
+
+ - Experiment with how we can apply different shims/strategies to migrate NLog with minimal interruption
+ - Expand the code porting process to identify more things
+ - Prove this is feasible
+
 ### You're mad!
 
 Yes. I've got [evidence](https://github.com/shiftkey/cloaked-hipster/pull/1/files) from co-workers who agree with you. Your point?
@@ -79,7 +87,7 @@ Yes. I've got [evidence](https://github.com/shiftkey/cloaked-hipster/pull/1/file
 
 I'm looking for OSS projects you'd like to use in Metro Style apps but haven't been brought across.
 
-Skip these ones:
+Skip these types of libraries:
 
  - testing and mocking libraries (something I'm already looking at - with the help of others, requires a different approach altogether)
  - ORM/data access libraries (they're likely dependent on ADO.NET - which just isn't there. Unless you've got a bright idea on this of course).
