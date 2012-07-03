@@ -18,20 +18,27 @@ And this reply came back:
 
 So I've taken Paul's suggestion and gone a bit further:
 
- - Can we provide an WinRT-compatible library  for traditional .NET libraries to work against?
+## Can we provide an WinRT-compatible library  for traditional .NET libraries to work against?
 
-Why?
+### Goals
 
  - Provide an interface which is forward-compatible but works on their current platform (for some subset of the .NET ecosystem) 
- - Source-friendly way to test existing code
  - Allow library authors to migrate existing code gradually
- - For scenarios where Portable Class Libraries is not suitable (TODO: discuss)
-
-What sorts of things are good candidates?
+ - As WinRT favours interfaces for much of its core, testability of existing libraries should not be harmed
+ 
+What sorts of libraries did you have in mind?
 
  - Libraries which depend on the filesystem
  - ? Libraries which depend on the network
+ - Scenarios where Portable Class Libraries is not suitable (TODO: which?)
  - ????
+
+What sorts of libraries are not suited to this approach?
+
+ - Libraries which use reflection heavily
+ - ????
+
+### The Experiment
 
 Hell, I'm not even sure if this is legal. But anyway, here's what I've done so far.
 
@@ -48,6 +55,34 @@ So for this case there's these three classes missing (without modifying any code
  - StackTrace
  - System.Threading.Timer
 
-I'm focusing on the first one for now (not sure if the second one is supported, the third is an interesting case for a different polyfill).
+Which leads to an interesting topic:
 
+### Different Types of Workarounds
 
+I've been experimenting with a number of .NET OSS projects over the past few months to see where their pain points are and its generally come down to these sorts of behaviours:
+
+ - this code is real important, and I want to run it on a different platform without modifying source
+ - this code is real ugly, and I'd love an option to keep supporting the existing code and clean it up
+ - i know this code isn't going to be supported in the future, so I need a way to switch it off
+
+And these are the sorts of strategies I've used:
+
+ - extension methods (for example, reflection) with minimal changes in the source to allow the implementation to be swapped out. Aliases is another one (used very well in JSON.NET)
+ - an adapter to map the existing implementation to a new interface (less friction, short-term fix) or expose the new interface with the existing implementation behind it (more friction, long-term fix).
+ - conditional compilation (although partial classes may be an option if the code can be refactored to separate core and platform-specific code).
+
+### You're mad!
+
+Yes. I've got [evidence](https://github.com/shiftkey/cloaked-hipster/pull/1/files) from co-workers who agree with you. Your point?
+
+### Ok, how can I help?
+
+I'm looking for OSS projects you'd like to use in Metro Style apps but haven't been brought across.
+
+Skip these ones:
+
+ - testing and mocking libraries (something I'm already looking at - with the help of others, requires a different approach altogether)
+ - ORM/data access libraries (they're likely dependent on ADO.NET - which just isn't there. Unless you've got a bright idea on this of course).
+ - anything UI-specific - I'm drawing the line here for now. Nothing personal.
+
+And of course you can bug me on [Twitter](https://twitter.com/shiftkey) about any of the above.
