@@ -1,27 +1,55 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
 namespace Windows.Foundation.Collections
 {
-	[Activatable(100794368u), DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both), Version(100794368u)]
-	public sealed class PropertySet : IPropertySet, IObservableMap<string, object>, IMap<string, object>, IIterable<IKeyValuePair<string, object>>
-	{
-		public extern event MapChangedEventHandler<string, object> MapChanged
-		{
-			add;
-			remove;
-		}
-		public extern uint Size
-		{
-			get;
-		}
-		public extern PropertySet();
-		public extern object Lookup([In] string key);
-		public extern bool HasKey([In] string key);
-		public extern IMapView<string, object> GetView();
-		public extern bool Insert([In] string key, [In] object value);
-		public extern void Remove([In] string key);
-		public extern void Clear();
-		public extern IIterator<IKeyValuePair<string, object>> First();
-	}
+    [Activatable(100794368u), DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both), Version(100794368u)]
+    public sealed class PropertySet : IPropertySet
+    {
+        readonly IDictionary<string, object> internalValues = new Dictionary<string, object>();
+
+        public event MapChangedEventHandler<string, object> MapChanged;
+
+        public uint Size { get { return (uint)internalValues.Count; } }
+
+        public object Lookup(string key)
+        {
+            object result;
+            if (internalValues.TryGetValue(key, out result))
+            {
+                return result;
+            }
+            return null;
+        }
+
+        public bool HasKey(string key)
+        {
+            return internalValues.ContainsKey(key);
+        }
+        
+        public IMapView<string, object> GetView()
+        {
+            // TODO: what the fuck is this shit?
+            throw new NotImplementedException("what the fuck is this shit");
+        }
+
+        public bool Insert(string key, object value)
+        {
+            internalValues.Add(key, value);
+            return true;
+        }
+        
+        public void Remove(string key) { }
+        
+        public void Clear() { }
+
+        public IIterator<IKeyValuePair<string, object>> First()
+        {
+            var values = internalValues.Select(x => new KeyValuePairShim<string, object>(x.Key, x.Value));
+
+            return new IteratorShim<IKeyValuePair<string, object>>(values.GetEnumerator());
+        }
+    }
 }

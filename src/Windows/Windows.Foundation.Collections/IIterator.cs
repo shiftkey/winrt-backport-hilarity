@@ -1,20 +1,44 @@
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
 namespace Windows.Foundation.Collections
 {
-	[Guid(1786374243u, 17152, 17818, 153, 102, 203, 182, 96, 150, 62, 225), Version(100794368u)]
 	public interface IIterator<T>
 	{
-		T Current
-		{
-			get;
-		}
-		bool HasCurrent
-		{
-			get;
-		}
+		T Current { get; } 
+		bool HasCurrent { get; }
 		bool MoveNext();
-		uint GetMany([LengthIs(0u)] [Out] T[] items);
+		uint GetMany([LengthIs(0)] [Out] T[] items);
 	}
+
+    internal class IteratorShim<T> : IIterator<T>
+    {
+        readonly IEnumerator<T> enumerator;
+
+        internal IteratorShim(IEnumerator<T> enumerator)
+        {
+            this.enumerator = enumerator;
+        }
+
+        public T Current
+        {
+            get { return enumerator.Current; }
+        }
+        public bool HasCurrent
+        {
+            get { return default(T).Equals(enumerator.Current); }
+        }
+
+        public bool MoveNext()
+        {
+            return enumerator.MoveNext();
+        }
+
+        public uint GetMany(T[] items)
+        {
+            // TODO: what the fuck is this shit?
+            throw new NotImplementedException("what the fuck is this shit");
+        }
+    }
 }

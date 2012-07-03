@@ -3,7 +3,6 @@ using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
 namespace Windows.Foundation.Collections
 {
-	[Guid(2436052969u, 4513, 17221, 163, 162, 78, 127, 149, 110, 34, 45), Version(100794368u)]
 	public interface IVector<T> : IIterable<T>
 	{
 		uint Size
@@ -19,7 +18,7 @@ namespace Windows.Foundation.Collections
 		void Append([In] T value);
 		void RemoveAtEnd();
 		void Clear();
-		uint GetMany([In] uint startIndex, [LengthIs(0u)] [Out] T[] items);
+		uint GetMany([In] uint startIndex, [LengthIs(0)] [Out] T[] items);
 		void ReplaceAll([In] T[] items);
 	}
 }

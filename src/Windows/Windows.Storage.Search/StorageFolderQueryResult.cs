@@ -1,34 +1,23 @@
-using System;
-using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Foundation.Metadata;
+
 namespace Windows.Storage.Search
 {
-	[Version(100794368u)]
-	public sealed class StorageFolderQueryResult : IStorageFolderQueryResult, IStorageQueryResultBase
+	public class StorageFolderQueryResult : IStorageFolderQueryResult
 	{
-		public extern event TypedEventHandler<IStorageQueryResultBase, object> ContentsChanged
-		{
-			add;
-			remove;
-		}
-		public extern event TypedEventHandler<IStorageQueryResultBase, object> OptionsChanged
-		{
-			add;
-			remove;
-		}
-		public extern StorageFolder Folder
-		{
-			get;
-		}
-		[Overload("GetFoldersAsync")]
-		public extern IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync([In] uint startIndex, [In] uint maxNumberOfItems);
-		[Overload("GetFoldersAsyncDefaultStartAndCount")]
-		public extern IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync();
-		public extern IAsyncOperation<uint> GetItemCountAsync();
-		public extern IAsyncOperation<uint> FindStartIndexAsync([Variant] [In] object value);
-		public extern QueryOptions GetCurrentQueryOptions();
-		public extern void ApplyNewQueryOptions([In] QueryOptions newQueryOptions);
+	    public event TypedEventHandler<IStorageQueryResultBase, object> ContentsChanged;
+
+	    public event TypedEventHandler<IStorageQueryResultBase, object> OptionsChanged;
+
+	    public StorageFolder Folder { get; private set; }
+	
+		
+		public IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync(uint startIndex, uint maxNumberOfItems) { }
+
+        public IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync() { }
+        public IAsyncOperation<uint> GetItemCountAsync() { }
+        public IAsyncOperation<uint> FindStartIndexAsync(object value) { }
+        public QueryOptions GetCurrentQueryOptions() { }
+        public void ApplyNewQueryOptions(QueryOptions newQueryOptions) { }
 	}
 }

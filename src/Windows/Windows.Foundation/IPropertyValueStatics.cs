@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
 namespace Windows.Foundation
 {
-	[ExclusiveTo(typeof(PropertyValue)), Guid(1654381512u, 55602, 20468, 150, 185, 141, 150, 197, 193, 232, 88), Version(100794368u), WebHostHidden]
+	[ExclusiveTo(typeof(PropertyValue)), WebHostHidden]
 	internal interface IPropertyValueStatics
 	{
 		object CreateEmpty();

@@ -1,18 +1,11 @@
 using System;
-using Windows.Foundation.Metadata;
+
 namespace Windows.Foundation
 {
-	[Guid(1272349405u, 30036, 16617, 154, 155, 130, 101, 78, 222, 126, 98), Version(100794368u)]
 	public interface IPropertyValue
 	{
-		bool IsNumericScalar
-		{
-			get;
-		}
-		PropertyType Type
-		{
-			get;
-		}
+		bool IsNumericScalar { get; }
+		PropertyType Type { get; }
 		byte GetUInt8();
 		short GetInt16();
 		ushort GetUInt16();

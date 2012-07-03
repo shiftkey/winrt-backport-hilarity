@@ -7,10 +7,7 @@ namespace Windows.Foundation
 	[Activatable(typeof(IWwwFormUrlDecoderRuntimeClassFactory), 100794368u), MarshalingBehavior(MarshalingType.Agile), Version(100794368u)]
 	public sealed class WwwFormUrlDecoder : IWwwFormUrlDecoderRuntimeClass, IIterable<IWwwFormUrlDecoderEntry>, IVectorView<IWwwFormUrlDecoderEntry>
 	{
-		public extern uint Size
-		{
-			get;
-		}
+		public extern uint Size { get; }
 		public extern WwwFormUrlDecoder([In] string hstrWwwFormUrlDecoder);
 		public extern string GetFirstValueByName([In] string name);
 		public extern IIterator<IWwwFormUrlDecoderEntry> First();
