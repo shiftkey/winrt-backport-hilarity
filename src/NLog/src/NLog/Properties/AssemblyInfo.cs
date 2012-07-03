@@ -58,6 +58,8 @@ using System.Runtime.InteropServices;
     [assembly: AssemblyTitle("NLog for Windows Phone 7")]
 #elif WINDOWS_PHONE_7_1
     [assembly: AssemblyTitle("NLog for Windows Phone 7.1")]
+#elif NETFX_CORE
+    [assembly: AssemblyTitle("NLog for Metro Apps")]
 #elif DOCUMENTATION
     [assembly: AssemblyTitle("NLog Documentation")]
 #else
