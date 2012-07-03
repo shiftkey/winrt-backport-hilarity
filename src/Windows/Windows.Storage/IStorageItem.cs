@@ -3,9 +3,10 @@ using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage
 {
-	[Guid(1107798422u, 51759, 17143, 189, 232, 139, 16, 69, 122, 127, 48), Version(100794368u)]
 	public interface IStorageItem
 	{
 		FileAttributes Attributes

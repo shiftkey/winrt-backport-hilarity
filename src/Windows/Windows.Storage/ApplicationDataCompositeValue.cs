@@ -7,11 +7,7 @@ namespace Windows.Storage
 	[Activatable(100794368u), DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.MTA), Version(100794368u)]
 	public sealed class ApplicationDataCompositeValue : IPropertySet, IObservableMap<string, object>, IMap<string, object>, IIterable<IKeyValuePair<string, object>>
 	{
-		public extern event MapChangedEventHandler<string, object> MapChanged
-		{
-			add;
-			remove;
-		}
+	    public extern event MapChangedEventHandler<string, object> MapChanged;
 		public extern uint Size
 		{
 			get;

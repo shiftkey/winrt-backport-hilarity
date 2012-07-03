@@ -4,7 +4,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage
 {
-	[ExclusiveTo(typeof(ApplicationDataContainer)), Guid(3316579614u, 62567, 16570, 133, 102, 171, 100, 10, 68, 30, 29), Version(100794368u)]
+	[ExclusiveTo(typeof(ApplicationDataContainer))]
 	internal interface IApplicationDataContainer
 	{
 		IMapView<string, ApplicationDataContainer> Containers

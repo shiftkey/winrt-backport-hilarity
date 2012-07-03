@@ -5,7 +5,6 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage
 {
-	[Guid(1926351736u, 46063, 20341, 168, 11, 111, 217, 218, 226, 148, 75), Version(100794368u)]
 	public interface IStorageFolder : IStorageItem
 	{
 		[Overload("CreateFileAsyncOverloadDefaultOptions")]

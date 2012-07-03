@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage.FileProperties
 {
 	[Version(100794368u)]

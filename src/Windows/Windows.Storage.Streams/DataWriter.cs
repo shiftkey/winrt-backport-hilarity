@@ -2,9 +2,13 @@ using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+using DateTime = Windows.Foundation.DateTime;
+
+
 namespace Windows.Storage.Streams
 {
-	[Activatable(typeof(IDataWriterFactory), 100794368u), Activatable(100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both), Version(100794368u)]
+	[Activatable(typeof(IDataWriterFactory), 100794368u), Activatable(100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both)]
 	public sealed class DataWriter : IDataWriter, IClosable
 	{
 		public extern ByteOrder ByteOrder

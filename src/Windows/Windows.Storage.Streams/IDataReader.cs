@@ -1,10 +1,10 @@
 using System;
 using System.Runtime.InteropServices;
-using Windows.Foundation;
-using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage.Streams
 {
-	[Guid(3803512873u, 46273, 17172, 164, 184, 251, 129, 58, 47, 39, 94), Version(100794368u)]
 	public interface IDataReader
 	{
 		ByteOrder ByteOrder

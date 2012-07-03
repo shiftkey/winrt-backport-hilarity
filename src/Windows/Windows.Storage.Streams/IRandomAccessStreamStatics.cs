@@ -4,7 +4,7 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage.Streams
 {
-	[ExclusiveTo(typeof(RandomAccessStream)), Guid(1380773327u, 28201, 19685, 149, 115, 107, 117, 61, 182, 108, 58), Version(100794368u)]
+	[ExclusiveTo(typeof(RandomAccessStream))]
 	internal interface IRandomAccessStreamStatics
 	{
 		[Overload("CopyAsync")]

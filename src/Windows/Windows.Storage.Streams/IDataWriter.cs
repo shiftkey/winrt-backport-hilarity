@@ -2,10 +2,12 @@ using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage.Streams
 {
-	[Guid(1689817701u, 54081, 18722, 179, 138, 221, 74, 248, 128, 140, 78), Version(100794368u)]
-	public interface IDataWriter
+    public interface IDataWriter
 	{
 		ByteOrder ByteOrder
 		{

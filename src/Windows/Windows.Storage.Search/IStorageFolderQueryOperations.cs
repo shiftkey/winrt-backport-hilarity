@@ -5,7 +5,6 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage.Search
 {
-	[Guid(3410218185u, 17515, 19023, 190, 151, 117, 119, 113, 190, 82, 3), Version(100794368u)]
 	public interface IStorageFolderQueryOperations
 	{
 		IAsyncOperation<IndexedState> GetIndexedStateAsync();

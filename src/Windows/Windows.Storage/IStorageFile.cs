@@ -1,11 +1,9 @@
-using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage.Streams;
 namespace Windows.Storage
 {
-	[Guid(4198457734u, 16916, 17036, 166, 76, 20, 201, 172, 115, 21, 234), Version(100794368u)]
 	public interface IStorageFile : IStorageItem, IRandomAccessStreamReference, IInputStreamReference
 	{
 		string ContentType

@@ -5,7 +5,6 @@ using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
 namespace Windows.Storage
 {
-	[Guid(2254849144u, 32809, 18174, 167, 137, 28, 47, 62, 47, 251, 92), Version(100794368u)]
 	public interface IStorageItemProperties
 	{
 		string DisplayName

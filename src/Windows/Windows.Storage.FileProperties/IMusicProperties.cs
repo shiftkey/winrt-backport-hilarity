@@ -1,10 +1,10 @@
-using System;
-using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+
 namespace Windows.Storage.FileProperties
 {
-	[ExclusiveTo(typeof(MusicProperties)), Guid(3163204450u, 26348, 16794, 188, 93, 202, 101, 164, 203, 70, 218), Version(100794368u)]
+	[ExclusiveTo(typeof(MusicProperties))]
 	internal interface IMusicProperties : IStorageItemExtraProperties
 	{
 		string Album

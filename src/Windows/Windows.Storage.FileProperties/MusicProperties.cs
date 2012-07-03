@@ -1,8 +1,10 @@
-using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+
+
 namespace Windows.Storage.FileProperties
 {
 	[Version(100794368u)]

@@ -2,6 +2,8 @@ using System;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+
 namespace Windows.Storage.FileProperties
 {
 	[ExclusiveTo(typeof(VideoProperties)), Guid(1905976583u, 26846, 19896, 151, 222, 73, 153, 140, 5, 159, 47), Version(100794368u)]

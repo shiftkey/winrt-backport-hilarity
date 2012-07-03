@@ -5,6 +5,7 @@ using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Search;
+using DateTime = Windows.Foundation.DateTime;
 namespace Windows.Storage
 {
 	[Static(typeof(IStorageFolderStatics), 100794368u), Version(100794368u)]

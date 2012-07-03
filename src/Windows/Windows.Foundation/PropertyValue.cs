@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
 namespace Windows.Foundation
 {
-	[MarshalingBehavior(MarshalingType.Agile), Static(typeof(IPropertyValueStatics), 100794368u), Threading(ThreadingModel.Both), Version(100794368u), WebHostHidden]
+	[MarshalingBehavior(MarshalingType.Agile), Static(typeof(IPropertyValueStatics), 100794368u), Threading(ThreadingModel.Both), WebHostHidden]
 	public static class PropertyValue
 	{
 		public static extern object CreateEmpty();

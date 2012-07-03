@@ -2,6 +2,8 @@ using System;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage.FileProperties
 {
 	[ExclusiveTo(typeof(ImageProperties)), Guid(1379701796u, 64767, 17013, 175, 238, 236, 219, 154, 180, 121, 115), Version(100794368u)]

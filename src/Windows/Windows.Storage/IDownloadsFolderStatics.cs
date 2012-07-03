@@ -4,7 +4,7 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage
 {
-	[ExclusiveTo(typeof(DownloadsFolder)), Guid(663105232u, 16462, 18399, 161, 226, 227, 115, 8, 190, 123, 55), Version(100794368u)]
+	[ExclusiveTo(typeof(DownloadsFolder))]
 	internal interface IDownloadsFolderStatics
 	{
 		[Overload("CreateFileAsync")]

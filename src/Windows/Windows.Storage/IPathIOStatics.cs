@@ -6,7 +6,7 @@ using Windows.Foundation.Metadata;
 using Windows.Storage.Streams;
 namespace Windows.Storage
 {
-	[ExclusiveTo(typeof(PathIO)), Guid(254752600u, 36551, 17281, 146, 43, 143, 108, 7, 210, 136, 243), Version(100794368u)]
+	[ExclusiveTo(typeof(PathIO))]
 	internal interface IPathIOStatics
 	{
 		[Overload("ReadTextAsync")]

@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
+
 namespace Windows.Foundation.Collections
 {
-    [Activatable(100794368u), DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both), Version(100794368u)]
+    [Activatable(100794368u), DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Threading(ThreadingModel.Both)]
     public sealed class PropertySet : IPropertySet
     {
         readonly IDictionary<string, object> internalValues = new Dictionary<string, object>();

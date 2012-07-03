@@ -4,7 +4,7 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 namespace Windows.Storage
 {
-	[ExclusiveTo(typeof(ApplicationData)), Guid(3285872567u, 46916, 19269, 176, 184, 34, 58, 9, 56, 208, 220), Version(100794368u)]
+	[ExclusiveTo(typeof(ApplicationData))]
 	internal interface IApplicationData
 	{
 		event TypedEventHandler<ApplicationData, object> DataChanged;

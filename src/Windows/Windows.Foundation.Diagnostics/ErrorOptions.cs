@@ -1,8 +1,8 @@
 using System;
-using Windows.Foundation.Metadata;
+
 namespace Windows.Foundation.Diagnostics
 {
-	[Flags, Version(100794368u)]
+	[Flags]
 	public enum ErrorOptions : uint
 	{
 		None = 0u,

@@ -1,11 +1,11 @@
-using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation.Collections;
 using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
 namespace Windows.Storage.Search
 {
-	[Activatable(typeof(IQueryOptionsFactory), 100794368u), Activatable(100794368u), MarshalingBehavior(MarshalingType.Agile), Version(100794368u)]
+	[Activatable(typeof(IQueryOptionsFactory), 100794368u)]
+    [Activatable(100794368u), MarshalingBehavior(MarshalingType.Agile), Version(100794368u)]
 	public sealed class QueryOptions : IQueryOptions
 	{
 		public extern string ApplicationSearchFilter

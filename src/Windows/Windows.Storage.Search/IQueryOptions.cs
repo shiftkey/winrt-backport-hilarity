@@ -5,7 +5,7 @@ using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
 namespace Windows.Storage.Search
 {
-	[ExclusiveTo(typeof(QueryOptions)), Guid(509495022u, 3909, 18488, 168, 233, 208, 71, 157, 68, 108, 48), Version(100794368u)]
+	[ExclusiveTo(typeof(QueryOptions))]
 	internal interface IQueryOptions
 	{
 		string ApplicationSearchFilter

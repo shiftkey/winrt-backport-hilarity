@@ -1,11 +1,9 @@
-using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
-using Windows.Foundation.Metadata;
+
 namespace Windows.Storage.Streams
 {
-	[Guid(2421821409u, 48211, 4575, 140, 73, 0, 30, 79, 198, 134, 218), Version(100794368u)]
-	public interface IRandomAccessStream : IClosable, IInputStream, IOutputStream
+	public interface IRandomAccessStream : IInputStream, IOutputStream
 	{
 		bool CanRead
 		{

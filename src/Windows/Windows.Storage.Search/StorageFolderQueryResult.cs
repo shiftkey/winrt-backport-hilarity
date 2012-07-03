@@ -10,14 +10,14 @@ namespace Windows.Storage.Search
 	    public event TypedEventHandler<IStorageQueryResultBase, object> OptionsChanged;
 
 	    public StorageFolder Folder { get; private set; }
-	
-		
-		public IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync(uint startIndex, uint maxNumberOfItems) { }
 
-        public IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync() { }
-        public IAsyncOperation<uint> GetItemCountAsync() { }
-        public IAsyncOperation<uint> FindStartIndexAsync(object value) { }
-        public QueryOptions GetCurrentQueryOptions() { }
+
+	    public extern IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync(uint startIndex, uint maxNumberOfItems);
+
+        public extern IAsyncOperation<IVectorView<StorageFolder>> GetFoldersAsync();
+	    public extern IAsyncOperation<uint> GetItemCountAsync();
+	    public extern IAsyncOperation<uint> FindStartIndexAsync(object value);
+	    public extern QueryOptions GetCurrentQueryOptions();
         public void ApplyNewQueryOptions(QueryOptions newQueryOptions) { }
 	}
 }

@@ -7,11 +7,7 @@ namespace Windows.Storage
 	[DualApiPartition(version = 100794368u), MarshalingBehavior(MarshalingType.Agile), Static(typeof(IApplicationDataStatics), 100794368u), Threading(ThreadingModel.MTA), Version(100794368u)]
 	public sealed class ApplicationData : IApplicationData
 	{
-		public extern event TypedEventHandler<ApplicationData, object> DataChanged
-		{
-			add;
-			remove;
-		}
+	    public event TypedEventHandler<ApplicationData, object> DataChanged;
 		public extern StorageFolder LocalFolder
 		{
 			get;

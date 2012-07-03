@@ -4,6 +4,8 @@ using Windows.Foundation;
 using Windows.Foundation.Metadata;
 using Windows.Storage.FileProperties;
 using Windows.Storage.Streams;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage
 {
 	[Static(typeof(IStorageFileStatics), 100794368u), Version(100794368u)]

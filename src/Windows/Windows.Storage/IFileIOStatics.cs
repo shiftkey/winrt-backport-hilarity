@@ -6,7 +6,7 @@ using Windows.Foundation.Metadata;
 using Windows.Storage.Streams;
 namespace Windows.Storage
 {
-	[ExclusiveTo(typeof(FileIO)), Guid(2289308139u, 32596, 18226, 165, 240, 94, 67, 227, 184, 194, 245), Version(100794368u)]
+	[ExclusiveTo(typeof(FileIO))]
 	internal interface IFileIOStatics
 	{
 		[Overload("ReadTextAsync")]

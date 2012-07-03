@@ -2,9 +2,12 @@ using System;
 using System.Runtime.InteropServices;
 using Windows.Foundation;
 using Windows.Foundation.Metadata;
+using TimeSpan = Windows.Foundation.TimeSpan;
+using DateTime = Windows.Foundation.DateTime;
+
 namespace Windows.Storage.Streams
 {
-	[Activatable(typeof(IDataReaderFactory), 100794368u), MarshalingBehavior(MarshalingType.Agile), Static(typeof(IDataReaderStatics), 100794368u), Threading(ThreadingModel.Both), Version(100794368u)]
+	[Activatable(typeof(IDataReaderFactory), 100794368u), MarshalingBehavior(MarshalingType.Agile), Static(typeof(IDataReaderStatics), 100794368u), Threading(ThreadingModel.Both)]
 	public sealed class DataReader : IDataReader, IClosable
 	{
 		public extern ByteOrder ByteOrder
