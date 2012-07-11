@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 namespace NLog.Conditions
 {
     using System;
@@ -39,6 +41,9 @@ namespace NLog.Conditions
     using System.Reflection;
     using System.Text;
     using NLog.Common;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// Condition method invocation expression (represented by <b>method(p1,p2,p3)</b> syntax).

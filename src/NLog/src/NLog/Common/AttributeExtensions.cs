@@ -12,6 +12,15 @@ namespace NLog.Common
     /// </summary>
     public static class AttributeExtensions
     {
+        public static ConstructorInfo GetConstructor(this Type type, Type[] types)
+        {
+#if NETFX_CORE
+            return type.GetTypeInfo().DeclaredConstructors.FirstOrDefault();
+#else
+            return type.GetConstructor(emptyTypes);
+#endif
+        }
+
         public static bool IsDefined(this Type type, Type childType)
         {
 #if NETFX_CORE

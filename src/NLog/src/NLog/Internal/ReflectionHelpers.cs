@@ -31,10 +31,13 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 namespace NLog.Internal
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using System.Text;
     using NLog.Common;
@@ -52,8 +55,10 @@ namespace NLog.Internal
         /// <remarks>Types which cannot be loaded are skipped.</remarks>
         public static Type[] SafeGetTypes(this Assembly assembly)
         {
-#if NET_CF || SILVERLIGHT
+#if NET_CF || SILVERLIGHT && !NETFX_CORE
             return assembly.GetTypes();
+#elif NETFX_CORE
+            return assembly.DefinedTypes.Select(t => t.AsType()).ToArray();
 #else
             try
             {

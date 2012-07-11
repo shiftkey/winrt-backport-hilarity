@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 
 namespace Windows.Adapters
 {
@@ -13,6 +14,11 @@ namespace Windows.Adapters
 
     public static class TypeExtensions
     {
+        public static void Close(this TextWriter writer)
+        {
+            writer.FlushAsync();
+            writer.Dispose();
+        }
         
     }
 }

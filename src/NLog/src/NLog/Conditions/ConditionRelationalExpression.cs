@@ -106,27 +106,40 @@ namespace NLog.Conditions
         /// <returns>Result of the given relational operator.</returns>
         private static object Compare(object leftValue, object rightValue, ConditionRelationalOperator relationalOperator)
         {
+#if NETFX_CORE
+            StringComparer comparer = StringComparer.Ordinal;
+            PromoteTypes(ref leftValue, ref rightValue);
+            string leftValueText = leftValue.ToString();
+            string rightValueText = rightValue.ToString();
+#else
             StringComparer comparer = StringComparer.InvariantCulture;
             PromoteTypes(ref leftValue, ref rightValue);
+            var leftValueText = leftValue;
+            var rightValueText = rightValue;
+#endif
+
+
+
+
             switch (relationalOperator)
             {
                 case ConditionRelationalOperator.Equal:
-                    return comparer.Compare(leftValue, rightValue) == 0;
+                    return comparer.Compare(leftValueText, rightValueText) == 0;
 
                 case ConditionRelationalOperator.NotEqual:
-                    return comparer.Compare(leftValue, rightValue) != 0;
+                    return comparer.Compare(leftValueText, rightValueText) != 0;
 
                 case ConditionRelationalOperator.Greater:
-                    return comparer.Compare(leftValue, rightValue) > 0;
+                    return comparer.Compare(leftValueText, rightValueText) > 0;
 
                 case ConditionRelationalOperator.GreaterOrEqual:
-                    return comparer.Compare(leftValue, rightValue) >= 0;
+                    return comparer.Compare(leftValueText, rightValueText) >= 0;
 
                 case ConditionRelationalOperator.LessOrEqual:
-                    return comparer.Compare(leftValue, rightValue) <= 0;
+                    return comparer.Compare(leftValueText, rightValueText) <= 0;
 
                 case ConditionRelationalOperator.Less:
-                    return comparer.Compare(leftValue, rightValue) < 0;
+                    return comparer.Compare(leftValueText, rightValueText) < 0;
 
                 default:
                     throw new NotSupportedException("Relational operator " + relationalOperator + " is not supported.");

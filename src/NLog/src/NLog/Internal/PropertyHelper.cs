@@ -253,7 +253,7 @@ namespace NLog.Internal
             }
             else
             {
-                FieldInfo enumField = resultType.GetField(value, BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.FlattenHierarchy | BindingFlags.Public);
+                var enumField = resultType.GetField(value);
                 if (enumField == null)
                 {
                     throw new NLogConfigurationException("Invalid enumeration value '" + value + "'.");

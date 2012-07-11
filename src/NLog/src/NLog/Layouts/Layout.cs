@@ -31,10 +31,13 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 namespace NLog.Layouts
 {
     using System.ComponentModel;
     using NLog.Config;
+    using NLog.Common;
     using NLog.Internal;
 
     /// <summary>
