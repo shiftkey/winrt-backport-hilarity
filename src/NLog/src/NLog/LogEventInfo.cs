@@ -43,6 +43,10 @@ namespace NLog
     using NLog.Common;
     using NLog.Internal;
     using NLog.Layouts;
+#if NETFX_CORE
+    using StackTrace = Windows.Adapters.StackTrace;
+    using StackFrame = Windows.Adapters.StackFrame;
+#endif
 
     /// <summary>
     /// Represents the logging event.

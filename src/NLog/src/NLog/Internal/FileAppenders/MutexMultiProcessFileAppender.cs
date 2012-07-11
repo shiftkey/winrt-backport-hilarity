@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 #if !NET_CF && !SILVERLIGHT
 
 namespace NLog.Internal.FileAppenders
@@ -40,6 +42,7 @@ namespace NLog.Internal.FileAppenders
     using System.IO;
     using System.Threading;
     using NLog.Common;
+    using Windows.Storage.Streams;
 
     /// <summary>
     /// Provides a multiprocess-safe atomic file appends while
@@ -56,7 +59,7 @@ namespace NLog.Internal.FileAppenders
     {
         public static readonly IFileAppenderFactory TheFactory = new Factory();
 
-        private FileStream file;
+        private IRandomAccessStream file;
         private Mutex mutex;
 
         /// <summary>
@@ -113,9 +116,12 @@ namespace NLog.Internal.FileAppenders
 
             try
             {
-                this.file.Seek(0, SeekOrigin.End);
-                this.file.Write(bytes, 0, bytes.Length);
-                this.file.Flush();
+                this.file.Seek(0);
+                this.file.WriteAsync(bytes.AsBuffer());
+                this.file.FlushAsync();
+                //this.file.Seek(0, SeekOrigin.End);
+                //this.file.Write(bytes, 0, bytes.Length);
+                //this.file.Flush();
                 FileTouched();
             }
             finally

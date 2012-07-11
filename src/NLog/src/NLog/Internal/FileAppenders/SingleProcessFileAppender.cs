@@ -31,11 +31,15 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 namespace NLog.Internal.FileAppenders
 {
     using System;
     using System.IO;
     using NLog.Common;
+    using IRandomAccessStream = Windows.Storage.Streams.IRandomAccessStream;
+    using Windows.Storage.Streams;
 
     /// <summary>
     /// Optimized single-process file appender which keeps the file open for exclusive write.
@@ -44,7 +48,7 @@ namespace NLog.Internal.FileAppenders
     {
         public static readonly IFileAppenderFactory TheFactory = new Factory();
 
-        private FileStream file;
+        private IRandomAccessStream file;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SingleProcessFileAppender" /> class.
@@ -67,7 +71,9 @@ namespace NLog.Internal.FileAppenders
                 return;
             }
 
-            this.file.Write(bytes, 0, bytes.Length);
+            var task = this.file.WriteAsync(bytes.AsBuffer());
+            var result = task.GetResults();
+            //this.file.Write(bytes, 0, bytes.Length);
             FileTouched();
         }
 
@@ -81,7 +87,8 @@ namespace NLog.Internal.FileAppenders
                 return;
             }
 
-            this.file.Flush();
+            this.file.FlushAsync();
+            //this.file.Flush();
             FileTouched();
         }
 

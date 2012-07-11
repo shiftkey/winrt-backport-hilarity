@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Windows.Foundation.Metadata;
+
 namespace Windows.Foundation.Collections
 {
 	public interface IIterator<T>
@@ -37,7 +38,6 @@ namespace Windows.Foundation.Collections
 
         public uint GetMany(T[] items)
         {
-            // TODO: what the fuck is this shit?
             throw new NotImplementedException("what the fuck is this shit");
         }
     }

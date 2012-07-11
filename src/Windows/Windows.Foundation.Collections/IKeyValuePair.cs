@@ -14,7 +14,7 @@ namespace Windows.Foundation.Collections
             Value = value;
         }
 
-        public K Key { get; set; }
-        public V Value { get; set; }
+        public K Key { get; private set; }
+        public V Value { get; private set; }
     }
 }

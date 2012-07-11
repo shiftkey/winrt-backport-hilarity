@@ -31,7 +31,6 @@ namespace Windows.Foundation.Collections
         
         public IMapView<string, object> GetView()
         {
-            // TODO: what the fuck is this shit?
             throw new NotImplementedException("what the fuck is this shit");
         }
 

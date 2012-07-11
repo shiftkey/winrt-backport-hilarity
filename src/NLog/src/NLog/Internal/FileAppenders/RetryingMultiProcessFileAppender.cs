@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+using Windows.Storage.Streams;
+
 namespace NLog.Internal.FileAppenders
 {
     using System;
@@ -59,10 +61,10 @@ namespace NLog.Internal.FileAppenders
         /// <param name="bytes">The bytes.</param>
         public override void Write(byte[] bytes)
         {
-            using (FileStream fileStream = CreateFileStream(false))
-            {
-                fileStream.Write(bytes, 0, bytes.Length);
-            }
+            var fileStream = CreateFileStream(false);
+            fileStream.WriteAsync(bytes.AsBuffer());
+            //fileStream.Write(bytes, 0, bytes.Length);
+            fileStream.Close();
 
             FileTouched();
         }

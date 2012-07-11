@@ -39,6 +39,11 @@ namespace NLog.Internal.FileAppenders
     using NLog.Common;
     using NLog.Config;
     using NLog.Internal;
+    using IRandomAccessStream = Windows.Storage.Streams.IRandomAccessStream;
+    using StorageFile = Windows.Storage.StorageFile;
+    using StorageFolder = Windows.Storage.StorageFolder;
+    using FileAccessMode = Windows.Storage.FileAccessMode;
+
 
     /// <summary>
     /// Base class for optimized file appenders.
@@ -151,7 +156,7 @@ namespace NLog.Internal.FileAppenders
         /// </summary>
         /// <param name="allowConcurrentWrite">If set to <c>true</c> allow concurrent writes.</param>
         /// <returns>A <see cref="FileStream"/> object which can be used to write to the file.</returns>
-        protected FileStream CreateFileStream(bool allowConcurrentWrite)
+        protected IRandomAccessStream CreateFileStream(bool allowConcurrentWrite)
         {
             int currentDelay = this.CreateFileParameters.ConcurrentWriteAttemptDelay;
 
@@ -171,7 +176,18 @@ namespace NLog.Internal.FileAppenders
                             throw;
                         }
 
-                        Directory.CreateDirectory(Path.GetDirectoryName(this.FileName));
+                        // TODO: I'd *really* like a way to create a folder without dealing with
+                        // known folders but I think there's a number of things to jump through
+                        // so that 
+                        var folderOperation = StorageFolder.GetFolderFromPathAsync(Path.GetDirectoryName(this.FileName));
+                        var folder = folderOperation.GetResults();
+
+                        if (folder == null)
+                        {
+                            
+                        }
+                        
+                        //Directory.CreateDirectory(Path.GetDirectoryName(this.FileName));
                         return this.TryCreateFileStream(allowConcurrentWrite);
                     }
                 }
@@ -229,35 +245,41 @@ namespace NLog.Internal.FileAppenders
         }
 #endif
 
-        private FileStream TryCreateFileStream(bool allowConcurrentWrite)
+        private IRandomAccessStream TryCreateFileStream(bool allowConcurrentWrite)
         {
-            FileShare fileShare = FileShare.Read;
+            var fileShare = FileAccessMode.Read;
 
             if (allowConcurrentWrite)
             {
-                fileShare = FileShare.ReadWrite;
+                fileShare = FileAccessMode.ReadWrite;
             }
 
-#if !NET_CF
-            if (this.CreateFileParameters.EnableFileDelete && PlatformDetector.CurrentOS != RuntimeOS.Windows)
-            {
-                fileShare |= FileShare.Delete;
-            }
-#endif
+//#if !NET_CF
+//            if (this.CreateFileParameters.EnableFileDelete && PlatformDetector.CurrentOS != RuntimeOS.Windows)
+//            {
+//                fileShare |= FileShare.Delete;
+//            }
+//#endif
 
-#if !NET_CF && !SILVERLIGHT
-            if (PlatformDetector.IsDesktopWin32)
-            {
-                return this.WindowsCreateFile(this.FileName, allowConcurrentWrite);
-            }
-#endif
+//#if !NET_CF && !SILVERLIGHT
+//            if (PlatformDetector.IsDesktopWin32)
+//            {
+//                return this.WindowsCreateFile(this.FileName, allowConcurrentWrite);
+//            }
+//#endif
 
-            return new FileStream(
-                this.FileName, 
-                FileMode.Append, 
-                FileAccess.Write, 
-                fileShare, 
-                this.CreateFileParameters.BufferSize);
+            var fileOperation = StorageFile.GetFileFromPathAsync(this.FileName);
+            var file = fileOperation.GetResults();
+
+            var fileStreamOperation = file.OpenAsync(fileShare);
+            return fileStreamOperation.GetResults();
+
+            //return new FileStream(
+            //    this.FileName, 
+            //    FileMode.Append, 
+            //    FileAccess.Write, 
+            //    fileShare, 
+            //    this.CreateFileParameters.BufferSize);
         }
     }
 }

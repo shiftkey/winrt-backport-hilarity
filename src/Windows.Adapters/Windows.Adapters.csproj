@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{94CE674C-C001-498D-A11C-B7877BC49F15}</ProjectGuid>
+    <ProjectGuid>{F6423C3D-9E6C-4471-A484-FD2723ED1FB1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NLog.Metro</RootNamespace>
-    <AssemblyName>NLog.Metro</AssemblyName>
+    <RootNamespace>Windows.Adapters</RootNamespace>
+    <AssemblyName>Windows.Adapters</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;NETFX_CORE;SILVERLIGHT</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -100,81 +100,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Targets\Wrappers\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\AsyncContinuation.cs" />
-    <Compile Include="Common\AsyncLogEventInfo.cs" />
-    <Compile Include="Common\InternalLogger.cs" />
-    <Compile Include="Conditions\ConditionMethodAttribute.cs" />
-    <Compile Include="Conditions\ConditionMethodsAttribute.cs" />
-    <Compile Include="Config\AdvancedAttribute.cs" />
-    <Compile Include="Config\AppDomainFixedOutputAttribute.cs" />
-    <Compile Include="Config\ConfigurationItemCreator.cs" />
-    <Compile Include="Config\ConfigurationItemFactory.cs" />
-    <Compile Include="Config\Factory.cs" />
-    <Compile Include="Config\IFactory.cs" />
-    <Compile Include="Config\IInstallable.cs" />
-    <Compile Include="Config\INamedItemFactory.cs" />
-    <Compile Include="Config\InstallationContext.cs" />
-    <Compile Include="Config\LoggingConfiguration.cs" />
-    <Compile Include="Config\LoggingRule.cs" />
-    <Compile Include="Config\MethodFactory.cs" />
-    <Compile Include="Config\NameBaseAttribute.cs" />
-    <Compile Include="Config\NLogConfigurationItemAttribute.cs" />
-    <Compile Include="Config\RequiredParameterAttribute.cs" />
-    <Compile Include="Config\ThreadAgnosticAttribute.cs" />
-    <Compile Include="Filters\Filter.cs" />
-    <Compile Include="Filters\FilterAttribute.cs" />
-    <Compile Include="Filters\FilterResult.cs" />
-    <Compile Include="Internal\CurrentTimeGetter.cs" />
-    <Compile Include="Internal\EnumerableHelpers.cs" />
-    <Compile Include="Internal\EnvironmentHelper.cs" />
-    <Compile Include="Internal\FileAppenders\BaseFileAppender.cs" />
-    <Compile Include="Internal\FileAppenders\ICreateFileParameters.cs" />
-    <Compile Include="Internal\FileAppenders\IFileAppenderFactory.cs" />
-    <Compile Include="Internal\IRenderable.cs" />
-    <Compile Include="Internal\ISupportsInitialize.cs" />
-    <Compile Include="LayoutRenderers\AmbientPropertyAttribute.cs" />
-    <Compile Include="LayoutRenderers\LayoutRenderer.cs" />
-    <Compile Include="LayoutRenderers\LayoutRendererAttribute.cs" />
-    <Compile Include="Layouts\Layout.cs" />
-    <Compile Include="Layouts\LayoutAttribute.cs" />
-    <Compile Include="Layouts\LayoutWithHeaderAndFooter.cs" />
-    <Compile Include="Layouts\SimpleLayout.cs" />
-    <Compile Include="LogEventInfo.cs" />
-    <Compile Include="LogLevel.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Targets\ArchiveNumberingMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\FileArchivePeriod.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\FileTarget.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\LineEndingMode.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\Target.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\TargetAttribute.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\TargetWithLayout.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Targets\TargetWithLayoutHeaderAndFooter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Windows.Adapters\Windows.Adapters.csproj">
-      <Project>{f6423c3d-9e6c-4471-a484-fd2723ed1fb1}</Project>
-      <Name>Windows.Adapters</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

@@ -1,18 +1,27 @@
-using System;
-using Windows.Foundation.Metadata;
 namespace Windows.Storage.Streams
 {
-	[Guid(2421821408u, 48211, 4575, 140, 73, 0, 30, 79, 198, 134, 218), Version(100794368u)]
 	public interface IBuffer
 	{
-		uint Capacity
-		{
-			get;
-		}
-		uint Length
-		{
-			get;
-			set;
-		}
+		uint Capacity { get; }
+		uint Length { get; set; }
 	}
+
+    public class BufferAdapter : IBuffer
+    {
+        public BufferAdapter(byte[] bytes)
+        {
+            
+        }
+
+        public uint Capacity { get; private set; }
+        public uint Length { get; set; }
+    }
+
+    public static class BufferExtensions
+    {
+        public static IBuffer AsBuffer(this byte[] bytes)
+        {
+            return new BufferAdapter(bytes);
+        }
+    }
 }

@@ -48,6 +48,9 @@ namespace NLog.Targets
     using NLog.Internal;
     using NLog.Internal.FileAppenders;
     using NLog.Layouts;
+#if NETFX_CORE
+    using Timer = Windows.Adapters.Timer;
+#endif
 
     /// <summary>
     /// Writes log messages to one or more files.

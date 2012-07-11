@@ -35,7 +35,9 @@ namespace NLog.Common
 {
     using System;
     using System.ComponentModel;
+#if !NETFX_CORE
     using System.Configuration;
+#endif
     using System.Globalization;
     using System.IO;
     using System.Text;

@@ -31,10 +31,13 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
+
 namespace NLog.Internal.FileAppenders
 {
     using System;
     using System.IO;
+    using Windows.Storage.Streams;
 
     /// <summary>
     /// Implementation of <see cref="BaseFileAppender"/> which caches 
@@ -44,7 +47,7 @@ namespace NLog.Internal.FileAppenders
     {
         public static readonly IFileAppenderFactory TheFactory = new Factory();
 
-        private FileStream file;
+        private IRandomAccessStream file;
 
         private long currentFileLength;
 
@@ -93,7 +96,8 @@ namespace NLog.Internal.FileAppenders
                 return;
             }
 
-            this.file.Flush();
+            this.file.FlushAsync();
+            //this.file.Flush();
             this.FileTouched();
         }
 
@@ -122,7 +126,8 @@ namespace NLog.Internal.FileAppenders
             }
 
             this.currentFileLength += bytes.Length;
-            this.file.Write(bytes, 0, bytes.Length);
+            this.file.WriteAsync(bytes.AsBuffer());
+            //this.file.Write(bytes, 0, bytes.Length);
             this.FileTouched();
         }
 
