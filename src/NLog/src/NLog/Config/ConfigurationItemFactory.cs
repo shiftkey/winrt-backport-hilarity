@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+using NLog.Common;
+
 namespace NLog.Config
 {
     using System;
@@ -212,7 +214,7 @@ namespace NLog.Config
         /// <returns>Default factory.</returns>
         private static ConfigurationItemFactory BuildDefaultFactory()
         {
-            var factory = new ConfigurationItemFactory(typeof(Logger).Assembly);
+            var factory = new ConfigurationItemFactory(typeof(FactoryHelper).Assembly());
             factory.RegisterExtendedItems();
 
             return factory;
@@ -223,7 +225,7 @@ namespace NLog.Config
         /// </summary>
         private void RegisterExtendedItems()
         {
-            string suffix = typeof(Logger).AssemblyQualifiedName;
+            string suffix = typeof(FactoryHelper).AssemblyQualifiedName;
             string myAssemblyName = "NLog,";
             string extendedAssemblyName = "NLog.Extended,";
             int p = suffix.IndexOf(myAssemblyName, StringComparison.OrdinalIgnoreCase);

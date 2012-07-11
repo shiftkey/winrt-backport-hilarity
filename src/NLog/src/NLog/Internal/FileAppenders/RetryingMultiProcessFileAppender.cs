@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+using System.Runtime.InteropServices.WindowsRuntime;
+using NLog.Common;
 using Windows.Storage.Streams;
 
 namespace NLog.Internal.FileAppenders
@@ -65,7 +67,7 @@ namespace NLog.Internal.FileAppenders
             fileStream.WriteAsync(bytes.AsBuffer());
             //fileStream.Write(bytes, 0, bytes.Length);
             fileStream.Close();
-
+            
             FileTouched();
         }
 

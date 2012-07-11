@@ -19,6 +19,5 @@ namespace Windows.Adapters
             writer.FlushAsync();
             writer.Dispose();
         }
-        
     }
 }

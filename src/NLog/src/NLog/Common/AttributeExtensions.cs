@@ -3,12 +3,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Windows.Storage.Streams;
+
 #endif
 
 namespace NLog.Common
 {
     /// <summary>
-    /// 
+    /// TODO: split this class better
     /// </summary>
     public static class AttributeExtensions
     {
@@ -18,6 +20,24 @@ namespace NLog.Common
             return type.GetTypeInfo().DeclaredConstructors.FirstOrDefault();
 #else
             return type.GetConstructor(emptyTypes);
+#endif
+        }
+
+        public static Assembly Assembly(this Type type)
+        {
+#if NETFX_CORE
+            return type.GetTypeInfo().Assembly;
+#else
+            return type.Assembly;
+#endif
+        }
+
+        public static string AssemblyQualifiedName(this Type type)
+        {
+#if NETFX_CORE
+            return type.GetTypeInfo().AssemblyQualifiedName;
+#else
+            return type.AssemblyQualifiedName;
 #endif
         }
 
@@ -106,7 +126,7 @@ namespace NLog.Common
             return type.GetTypeInfo().IsAssignableFrom(otherType.GetTypeInfo());
 #else
             return type.IsAssignableFrom(otherType);
-#endif            
+#endif
         }
 
         public static MethodInfo GetMethod(this Type type, string methodName)
@@ -137,4 +157,15 @@ namespace NLog.Common
 #endif
         }
     }
+
+    public static class CollectionExtensions
+    {
+        public static void Close(this IRandomAccessStream stream)
+        {
+            stream.FlushAsync();
+            stream.Dispose();
+        }
+    }
+
+
 }

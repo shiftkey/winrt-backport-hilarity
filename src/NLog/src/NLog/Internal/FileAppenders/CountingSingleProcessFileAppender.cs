@@ -32,6 +32,8 @@
 // 
 
 
+using System.Runtime.InteropServices.WindowsRuntime;
+using NLog.Common;
 
 namespace NLog.Internal.FileAppenders
 {

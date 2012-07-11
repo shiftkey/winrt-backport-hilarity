@@ -157,8 +157,11 @@
     <Compile Include="Internal\ExceptionHelper.cs" />
     <Compile Include="Internal\FactoryHelper.cs" />
     <Compile Include="Internal\FileAppenders\BaseFileAppender.cs" />
+    <Compile Include="Internal\FileAppenders\CountingSingleProcessFileAppender.cs" />
     <Compile Include="Internal\FileAppenders\ICreateFileParameters.cs" />
     <Compile Include="Internal\FileAppenders\IFileAppenderFactory.cs" />
+    <Compile Include="Internal\FileAppenders\RetryingMultiProcessFileAppender.cs" />
+    <Compile Include="Internal\FileAppenders\SingleProcessFileAppender.cs" />
     <Compile Include="Internal\IRenderable.cs" />
     <Compile Include="Internal\ISupportsInitialize.cs" />
     <Compile Include="Internal\LocalizableAttribute.cs" />
@@ -174,6 +177,7 @@
     <Compile Include="LayoutRenderers\LayoutRenderer.cs" />
     <Compile Include="LayoutRenderers\LayoutRendererAttribute.cs" />
     <Compile Include="LayoutRenderers\LiteralLayoutRenderer.cs" />
+    <Compile Include="LayoutRenderers\MessageLayoutRenderer.cs" />
     <Compile Include="LayoutRenderers\Wrappers\WrapperLayoutRendererBase.cs" />
     <Compile Include="Layouts\Layout.cs" />
     <Compile Include="Layouts\LayoutAttribute.cs" />
@@ -188,6 +192,7 @@
     <Compile Include="Targets\ArchiveNumberingMode.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Targets\DebugTarget.cs" />
     <Compile Include="Targets\FileArchivePeriod.cs">
       <SubType>Code</SubType>
     </Compile>
