@@ -43,6 +43,7 @@ namespace NLog.Internal.FileAppenders
     using StorageFile = Windows.Storage.StorageFile;
     using StorageFolder = Windows.Storage.StorageFolder;
     using FileAccessMode = Windows.Storage.FileAccessMode;
+    using Thread = Windows.Adapters.Thread;
 
 
     /// <summary>
@@ -198,10 +199,10 @@ namespace NLog.Internal.FileAppenders
                         throw; // rethrow
                     }
 
-                    int actualDelay = this.random.Next(currentDelay);
+                    var actualDelay = random.Next(currentDelay);
                     InternalLogger.Warn("Attempt #{0} to open {1} failed. Sleeping for {2}ms", i, this.FileName, actualDelay);
                     currentDelay *= 2;
-                    System.Threading.Thread.Sleep(actualDelay);
+                    Thread.Sleep(actualDelay);
                 }
             }
 

@@ -74,6 +74,7 @@
     <Compile Include="Common\AsyncHelpers.cs" />
     <Compile Include="Common\AsynchronousAction.cs" />
     <Compile Include="Common\AsyncLogEventInfo.cs" />
+    <Compile Include="Common\AttributeExtensions.cs" />
     <Compile Include="Common\InternalLogger.cs" />
     <Compile Include="Common\LogEventInfoBuffer.cs" />
     <Compile Include="Conditions\ConditionAndExpression.cs" />

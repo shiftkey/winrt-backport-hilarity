@@ -9,8 +9,8 @@
     <ProjectGuid>{94CE674C-C001-498D-A11C-B7877BC49F15}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NLog.Metro</RootNamespace>
-    <AssemblyName>NLog.Metro</AssemblyName>
+    <RootNamespace>NLog</RootNamespace>
+    <AssemblyName>NLog</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="Common\AsyncContinuation.cs" />
     <Compile Include="Common\AsyncLogEventInfo.cs" />
+    <Compile Include="Common\AttributeExtensions.cs" />
     <Compile Include="Common\InternalLogger.cs" />
     <Compile Include="Conditions\ConditionMethodAttribute.cs" />
     <Compile Include="Conditions\ConditionMethodsAttribute.cs" />
@@ -130,11 +131,14 @@
     <Compile Include="Internal\CurrentTimeGetter.cs" />
     <Compile Include="Internal\EnumerableHelpers.cs" />
     <Compile Include="Internal\EnvironmentHelper.cs" />
+    <Compile Include="Internal\ExceptionHelper.cs" />
     <Compile Include="Internal\FileAppenders\BaseFileAppender.cs" />
     <Compile Include="Internal\FileAppenders\ICreateFileParameters.cs" />
     <Compile Include="Internal\FileAppenders\IFileAppenderFactory.cs" />
     <Compile Include="Internal\IRenderable.cs" />
     <Compile Include="Internal\ISupportsInitialize.cs" />
+    <Compile Include="Internal\LocalizableAttribute.cs" />
+    <Compile Include="Internal\SortHelpers.cs" />
     <Compile Include="LayoutRenderers\AmbientPropertyAttribute.cs" />
     <Compile Include="LayoutRenderers\LayoutRenderer.cs" />
     <Compile Include="LayoutRenderers\LayoutRendererAttribute.cs" />

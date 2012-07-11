@@ -31,6 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+
 namespace NLog.Config
 {
     using System;
@@ -40,6 +41,8 @@ namespace NLog.Config
     using System.Text;
     using NLog.Filters;
     using NLog.Targets;
+    using Windows.Adapters;
+
 
     /// <summary>
     /// Represents a logging rule. An equivalent of &lt;logger /&gt; configuration element.
@@ -192,7 +195,7 @@ namespace NLog.Config
         /// <summary>
         /// Gets the collection of log levels enabled by this rule.
         /// </summary>
-        public ReadOnlyCollection<LogLevel> Levels
+        public IReadOnlyCollection<LogLevel> Levels
         {
             get
             {

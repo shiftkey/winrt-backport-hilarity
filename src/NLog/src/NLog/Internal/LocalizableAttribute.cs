@@ -31,7 +31,7 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-#if SILVERLIGHT || NET_CF
+#if SILVERLIGHT || NET_CF || NETFX_CORE
 
 namespace System.ComponentModel
 {

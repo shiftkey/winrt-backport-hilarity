@@ -37,6 +37,8 @@ namespace NLog.Common
     using System.ComponentModel;
 #if !NETFX_CORE
     using System.Configuration;
+#else
+    using Console = Windows.Adapters.Console;
 #endif
     using System.Globalization;
     using System.IO;
