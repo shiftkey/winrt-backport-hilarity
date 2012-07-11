@@ -41,8 +41,9 @@ namespace NLog.Config
     using NLog.Common;
     using NLog.Internal;
     using NLog.Targets;
+#if NETFX_CORE
     using Windows.Adapters;
-
+#endif
 
     /// <summary>
     /// Keeps logging configuration and provides simple API
@@ -72,7 +73,7 @@ namespace NLog.Config
         /// <remarks>
         /// Unnamed targets (such as those wrapped by other targets) are not returned.
         /// </remarks>
-        public IReadOnlyCollection<Target> ConfiguredNamedTargets
+        public ReadOnlyCollection<Target> ConfiguredNamedTargets
         {
             get { return new List<Target>(this.targets.Values).AsReadOnly(); }
         }
@@ -93,7 +94,7 @@ namespace NLog.Config
         /// <summary>
         /// Gets all targets.
         /// </summary>
-        public IReadOnlyCollection<Target> AllTargets
+        public ReadOnlyCollection<Target> AllTargets
         {
             get { return this.configItems.OfType<Target>().ToList().AsReadOnly(); }
         }

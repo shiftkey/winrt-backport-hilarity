@@ -35,6 +35,7 @@ namespace NLog.Internal.FileAppenders
 {
     using System;
     using System.IO;
+    using System.Threading;
     using System.Runtime.InteropServices;
     using NLog.Common;
     using NLog.Config;
@@ -43,7 +44,9 @@ namespace NLog.Internal.FileAppenders
     using StorageFile = Windows.Storage.StorageFile;
     using StorageFolder = Windows.Storage.StorageFolder;
     using FileAccessMode = Windows.Storage.FileAccessMode;
+#if NETFX_CORE
     using Thread = Windows.Adapters.Thread;
+#endif
 
 
     /// <summary>

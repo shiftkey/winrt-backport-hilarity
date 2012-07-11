@@ -91,7 +91,7 @@ namespace NLog.Config
         /// <param name="itemNamePrefix">The item name prefix.</param>
         public void RegisterType(Type type, string itemNamePrefix)
         {
-            TAttributeType[] attributes = (TAttributeType[])type.GetCustomAttributes(typeof(TAttributeType), false);
+            var attributes = type.GetAttributes<TAttributeType>();
             if (attributes != null)
             {
                 foreach (TAttributeType attr in attributes)

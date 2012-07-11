@@ -5,7 +5,7 @@ namespace Windows.Adapters
 {
     public static class CollectionExtensions
     {
-        public static IReadOnlyCollection<T> AsReadOnly<T>(this IList<T> list)
+        public static ReadOnlyCollection<T> AsReadOnly<T>(this IList<T> list)
         {
             return new ReadOnlyCollection<T>(list);
         }

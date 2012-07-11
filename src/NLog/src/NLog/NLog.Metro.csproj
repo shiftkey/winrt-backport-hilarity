@@ -104,6 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AsyncContinuation.cs" />
+    <Compile Include="Common\AsyncHelpers.cs" />
+    <Compile Include="Common\AsynchronousAction.cs" />
     <Compile Include="Common\AsyncLogEventInfo.cs" />
     <Compile Include="Common\AttributeExtensions.cs" />
     <Compile Include="Common\InternalLogger.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Internal\IRenderable.cs" />
     <Compile Include="Internal\ISupportsInitialize.cs" />
     <Compile Include="Internal\LocalizableAttribute.cs" />
+    <Compile Include="Internal\ParameterUtils.cs" />
     <Compile Include="Internal\SortHelpers.cs" />
     <Compile Include="LayoutRenderers\AmbientPropertyAttribute.cs" />
     <Compile Include="LayoutRenderers\LayoutRenderer.cs" />
@@ -148,6 +151,8 @@
     <Compile Include="Layouts\SimpleLayout.cs" />
     <Compile Include="LogEventInfo.cs" />
     <Compile Include="LogLevel.cs" />
+    <Compile Include="NLogConfigurationException.cs" />
+    <Compile Include="NLogRuntimeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Targets\ArchiveNumberingMode.cs">
       <SubType>Code</SubType>

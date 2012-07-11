@@ -41,7 +41,9 @@ namespace NLog.Config
     using System.Text;
     using NLog.Filters;
     using NLog.Targets;
+#if NETFX_CORE
     using Windows.Adapters;
+#endif
 
 
     /// <summary>
@@ -195,7 +197,7 @@ namespace NLog.Config
         /// <summary>
         /// Gets the collection of log levels enabled by this rule.
         /// </summary>
-        public IReadOnlyCollection<LogLevel> Levels
+        public ReadOnlyCollection<LogLevel> Levels
         {
             get
             {
