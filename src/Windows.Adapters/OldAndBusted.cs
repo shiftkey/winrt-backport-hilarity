@@ -11,7 +11,27 @@ namespace Windows.Adapters
         }
     }
 
-    public class Timer {  }
+    public class Timer : IDisposable {
+        public Timer(Action<object> autoClosingTimerCallback, object o, TimeSpan i, TimeSpan i1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Timer(Action<object> autoClosingTimerCallback, object o, int i, int i1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Change(int infinite, int i)
+        {
+            
+        }
+    }
 
     public class StackTrace {
         public StackFrame GetFrame(int someNumber) {
@@ -34,6 +54,13 @@ namespace Windows.Adapters
     public class ErrorLogger {
         public void WriteLine(string msg) {
 
+        }
+    }
+
+    public static class ThreadPool {
+        public static void QueueUserWorkItem(Action<object> action)
+        {
+            
         }
     }
 }

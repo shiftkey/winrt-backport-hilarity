@@ -120,7 +120,7 @@ namespace NLog.Internal
 
         internal static bool TryGetPropertyInfo(object o, string propertyName, out PropertyInfo result)
         {
-            PropertyInfo propInfo = o.GetType().GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            var propInfo = o.GetType().GetProperty(propertyName);
             if (propInfo != null)
             {
                 result = propInfo;
@@ -144,7 +144,7 @@ namespace NLog.Internal
 
         internal static Type GetArrayItemType(PropertyInfo propInfo)
         {
-            var arrayParameterAttribute = (ArrayParameterAttribute)Attribute.GetCustomAttribute(propInfo, typeof(ArrayParameterAttribute));
+            var arrayParameterAttribute = propInfo.GetAttribute<ArrayParameterAttribute>();
             if (arrayParameterAttribute != null)
             {
                 return arrayParameterAttribute.ItemType;
@@ -172,7 +172,7 @@ namespace NLog.Internal
             return readableProperties;
 #else
             // other frameworks don't have this problem
-            return type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            return type.GetProperties();
 #endif
         }
 
@@ -194,7 +194,7 @@ namespace NLog.Internal
 
         private static bool TryImplicitConversion(Type resultType, string value, out object result)
         {
-            MethodInfo operatorImplicitMethod = resultType.GetMethod("op_Implicit", BindingFlags.Public | BindingFlags.Static, null, new Type[] { typeof(string) }, null);
+            MethodInfo operatorImplicitMethod = resultType.GetMethod("op_Implicit");
             if (operatorImplicitMethod == null)
             {
                 result = null;
@@ -225,7 +225,7 @@ namespace NLog.Internal
 
         private static bool TryGetEnumValue(Type resultType, string value, out object result)
         {
-            if (!resultType.IsEnum)
+            if (!resultType.IsEnum())
             {
                 result = null;
                 return false;
@@ -237,7 +237,7 @@ namespace NLog.Internal
 
                 foreach (string v in value.Split(','))
                 {
-                    FieldInfo enumField = resultType.GetField(v.Trim(), BindingFlags.IgnoreCase | BindingFlags.Static | BindingFlags.FlattenHierarchy | BindingFlags.Public);
+                    FieldInfo enumField = resultType.GetField(v.Trim());
                     if (enumField == null)
                     {
                         throw new NLogConfigurationException("Invalid enumeration value '" + value + "'.");
@@ -298,7 +298,7 @@ namespace NLog.Internal
         {
             if (!string.IsNullOrEmpty(propertyName))
             {
-                PropertyInfo propInfo = targetType.GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                PropertyInfo propInfo = targetType.GetProperty(propertyName);
                 if (propInfo != null)
                 {
                     result = propInfo;
@@ -325,7 +325,7 @@ namespace NLog.Internal
             var retVal = new Dictionary<string, PropertyInfo>(StringComparer.OrdinalIgnoreCase);
             foreach (PropertyInfo propInfo in GetAllReadableProperties(t))
             {
-                var arrayParameterAttribute = (ArrayParameterAttribute)Attribute.GetCustomAttribute(propInfo, typeof(ArrayParameterAttribute));
+                var arrayParameterAttribute = propInfo.GetAttribute<ArrayParameterAttribute>();
 
                 if (arrayParameterAttribute != null)
                 {

@@ -38,6 +38,9 @@ namespace NLog.Common
     using System.Text;
     using System.Threading;
     using NLog.Internal;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// Helpers for asynchronous operations.

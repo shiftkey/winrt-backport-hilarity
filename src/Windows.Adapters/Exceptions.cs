@@ -11,4 +11,10 @@
     {
 
     }
+
+    [Obsolete("If you're looking for this you're in serious trouble")]
+    public class DirectoryNotFoundException : Exception
+    {
+        
+    }
 }
