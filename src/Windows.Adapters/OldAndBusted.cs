@@ -1,14 +1,18 @@
 ﻿using System;
+using System.Reflection;
 
 namespace Windows.Adapters
 {
     // all these classes do not currently have good alternatives
     // and are simply there for me to get code compiling
 
-    public static class Thread {
+    public class Thread {
+        public static Thread CurrentThread { get; private set; }
         public static void Sleep(int timeout) {
             
         }
+
+        public int ManagedThreadId { get; private set; }
     }
 
     public class Timer : IDisposable {
@@ -35,11 +39,25 @@ namespace Windows.Adapters
 
     public class StackTrace {
         public StackFrame GetFrame(int someNumber) {
-            return new StackFrame();
+            return new StackFrame(someNumber);
+        }
+
+        public int FrameCount
+        {
+            get { throw new NotImplementedException(); }
         }
     }
 
-    public class StackFrame { }
+    public class StackFrame {
+        public StackFrame(int i)
+        {
+            throw new NotImplementedException();
+        }
+
+        public MethodBase GetMethod() {
+            return null;
+        }
+    }
 
     public static class Console {
         static readonly ErrorLogger errorLogger = new ErrorLogger();

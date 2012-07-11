@@ -31,6 +31,8 @@
 // THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
+using Windows.Adapters;
+
 namespace NLog
 {
     using System;

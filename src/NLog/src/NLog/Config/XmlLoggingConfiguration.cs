@@ -48,6 +48,9 @@ namespace NLog.Config
     using NLog.Layouts;
     using NLog.Targets;
     using NLog.Targets.Wrappers;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// A class for configuring NLog through an XML configuration file 

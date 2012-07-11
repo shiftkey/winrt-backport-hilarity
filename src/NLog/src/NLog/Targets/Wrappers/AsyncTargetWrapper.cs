@@ -39,6 +39,9 @@ namespace NLog.Targets.Wrappers
     using System.Threading;
     using NLog.Common;
     using NLog.Internal;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// Provides asynchronous, buffered execution of target writes.

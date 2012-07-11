@@ -47,6 +47,9 @@ namespace NLog
     using NLog.Config;
     using NLog.Internal;
     using NLog.Targets;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// Creates and manages instances of <see cref="T:NLog.Logger" /> objects.

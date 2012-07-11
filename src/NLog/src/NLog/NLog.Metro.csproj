@@ -100,7 +100,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Targets\Wrappers\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AsyncContinuation.cs" />
@@ -141,12 +140,17 @@
     <Compile Include="Config\INamedItemFactory.cs" />
     <Compile Include="Config\InstallationContext.cs" />
     <Compile Include="Config\LoggingConfiguration.cs" />
+    <Compile Include="Config\LoggingConfigurationChangedEventArgs.cs" />
+    <Compile Include="Config\LoggingConfigurationReloadedEventArgs.cs" />
     <Compile Include="Config\LoggingRule.cs" />
     <Compile Include="Config\MethodFactory.cs" />
     <Compile Include="Config\NameBaseAttribute.cs" />
     <Compile Include="Config\NLogConfigurationItemAttribute.cs" />
+    <Compile Include="Config\NLogXmlElement.cs" />
     <Compile Include="Config\RequiredParameterAttribute.cs" />
+    <Compile Include="Config\StackTraceUsage.cs" />
     <Compile Include="Config\ThreadAgnosticAttribute.cs" />
+    <Compile Include="Config\XmlLoggingConfiguration.cs" />
     <Compile Include="Filters\Filter.cs" />
     <Compile Include="Filters\FilterAttribute.cs" />
     <Compile Include="Filters\FilterResult.cs" />
@@ -164,7 +168,9 @@
     <Compile Include="Internal\FileAppenders\SingleProcessFileAppender.cs" />
     <Compile Include="Internal\IRenderable.cs" />
     <Compile Include="Internal\ISupportsInitialize.cs" />
+    <Compile Include="Internal\IUsesStackTrace.cs" />
     <Compile Include="Internal\LocalizableAttribute.cs" />
+    <Compile Include="Internal\LoggerConfiguration.cs" />
     <Compile Include="Internal\ObjectGraphScanner.cs" />
     <Compile Include="Internal\ParameterUtils.cs" />
     <Compile Include="Internal\PropertyHelper.cs" />
@@ -172,6 +178,8 @@
     <Compile Include="Internal\SimpleStringReader.cs" />
     <Compile Include="Internal\SingleCallContinuation.cs" />
     <Compile Include="Internal\SortHelpers.cs" />
+    <Compile Include="Internal\StackTraceUsageUtils.cs" />
+    <Compile Include="Internal\TargetWithFilterChain.cs" />
     <Compile Include="Internal\TimeoutContinuation.cs" />
     <Compile Include="LayoutRenderers\AmbientPropertyAttribute.cs" />
     <Compile Include="LayoutRenderers\LayoutRenderer.cs" />
@@ -185,7 +193,12 @@
     <Compile Include="Layouts\LayoutWithHeaderAndFooter.cs" />
     <Compile Include="Layouts\SimpleLayout.cs" />
     <Compile Include="LogEventInfo.cs" />
+    <Compile Include="LogFactory.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="LoggerImpl.cs" />
     <Compile Include="LogLevel.cs" />
+    <Compile Include="LogManager.cs" />
+    <Compile Include="LogMessageGenerator.cs" />
     <Compile Include="NLogConfigurationException.cs" />
     <Compile Include="NLogRuntimeException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -214,6 +227,11 @@
     <Compile Include="Targets\TargetWithLayoutHeaderAndFooter.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Targets\Wrappers\AsyncRequestQueue-T.cs" />
+    <Compile Include="Targets\Wrappers\AsyncTargetWrapper.cs" />
+    <Compile Include="Targets\Wrappers\AsyncTargetWrapperOverflowAction.cs" />
+    <Compile Include="Targets\Wrappers\CompoundTargetBase.cs" />
+    <Compile Include="Targets\Wrappers\WrapperTargetBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Windows.Adapters\Windows.Adapters.csproj">

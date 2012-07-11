@@ -43,6 +43,9 @@ namespace NLog
     using NLog.Filters;
     using NLog.Internal;
     using NLog.Targets;
+#if NETFX_CORE
+    using Windows.Adapters;
+#endif
 
     /// <summary>
     /// Implementation of logging engine.
@@ -50,9 +53,9 @@ namespace NLog
     internal static class LoggerImpl
     {
         private const int StackTraceSkipMethods = 0;
-        private static readonly Assembly nlogAssembly = typeof(LoggerImpl).Assembly;
-        private static readonly Assembly mscorlibAssembly = typeof(string).Assembly;
-        private static readonly Assembly systemAssembly = typeof(Debug).Assembly;
+        private static readonly Assembly nlogAssembly = typeof(LoggerImpl).Assembly();
+        private static readonly Assembly mscorlibAssembly = typeof(string).Assembly();
+        private static readonly Assembly systemAssembly = typeof(Debug).Assembly();
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", Justification = "Using 'NLog' in message.")]
         internal static void Write(Type loggerType, TargetWithFilterChain targets, LogEventInfo logEvent, LogFactory factory)
@@ -113,7 +116,7 @@ namespace NLog
 
                 if (mb.DeclaringType != null)
                 {
-                    methodAssembly = mb.DeclaringType.Assembly;
+                    methodAssembly = mb.DeclaringType.Assembly();
                 }
 
                 if (SkipAssembly(methodAssembly) || mb.DeclaringType == loggerType)
